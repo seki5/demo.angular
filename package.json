@@ -6,7 +6,11 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "testNW": "nightwatch",
+    "test:karel": "nightwatch --env firefox --test ulozene_pohledy.js",
+    "test": "nightwatch --reporter mochawesome --parallel --require mochawesome/register --reporter-options --reportDir=myReport --reportFilename=[status]_[datetime]-[name]-report",
+    "generateJson": "mochawesome-merge ./html-report/*.json -o ./mocha_output/output.json",
+    "generateHtml": "marge ./html-report/output.json --reportDir ./ --inline"
   },
   "private": true,
   "dependencies": {
@@ -27,12 +31,18 @@
     "@angular/cli": "~15.2.2",
     "@angular/compiler-cli": "^15.2.0",
     "@types/jasmine": "~4.3.0",
+    "chromedriver": "^111.0.0",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
+    "mocha-parallel-tests": "^2.3.0",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.3.0",
+    "mochawesome-report-generator": "^6.2.0",
+    "nightwatch": "^2.6.17",
     "typescript": "~4.9.4"
   }
 }
