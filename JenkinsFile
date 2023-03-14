@@ -12,7 +12,8 @@ pipeline {
             steps {
                 echo "Building.."
                 sh '''
-                echo "doing build stuff.."
+                cd
+                npm install
                 
                 '''
             }
@@ -21,7 +22,8 @@ pipeline {
             steps {
                 echo "Testing.."
                 sh '''
-                echo "doing test stuff.."
+                npm run test -- nightwatch/test/contain.js
+                npm run test -- nightwatch/test/checkurl.js
                 '''
             }
         }
