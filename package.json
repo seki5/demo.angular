@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "testNW": "nightwatch",
     "test:karel": "nightwatch --env firefox --test ulozene_pohledy.js",
-    "test": "nightwatch --reporter mochawesome --parallel --require mochawesome/register --reporter-options --reportDir=myReport --reportFilename=[status]_[datetime]-[name]-report",
+    "test": "nightwatchgit push -u origin main --reporter mochawesome --parallel --require mochawesome/register --reporter-options --reportDir=myReport --reportFilename=[status]_[datetime]-[name]-report",
     "generateJson": "mochawesome-merge ./html-report/*.json -o ./mocha_output/output.json",
     "generateHtml": "marge ./html-report/output.json --reportDir ./ --inline"
   },
