@@ -4,27 +4,23 @@ pipeline {
             label 'docker-agent-alpine'
             }
       }
+    
+    tools {nodejs "node"}
+
     triggers {
         pollSCM '*/60 * * * *'
     }
     stages {
         stage('Build') {
             steps {
-                echo "Building.."
-                sh '''
-                cd
-                npm install
-                
-                '''
+                sh 'npm install'
             }
         }
         stage('Test') {
             steps {
-                echo "Testing.."
-                sh '''
-                npm run test -- nightwatch/test/contain.js
-                npm run test -- nightwatch/test/checkurl.js
-                '''
+               sh "npm run test -- nightwatch/test/contain.js"
+               sh "npm run test -- nightwatch/test/checkurl.js"
+                
             }
         }
         stage('Deliver') {
